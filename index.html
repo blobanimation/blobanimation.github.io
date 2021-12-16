@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <head>
     <title>Blob Animation | Generate smooth blob animation</title>
     <meta name="description" content="Blob Animation it's a free and simple tool to generate smooth blob animation for your website and design projects">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
@@ -39,7 +38,7 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
     border: none;
 }
-.slider, .nodes-slider, .total-blobs-slider, .rotate-slider {
+.slider, .nodes-slider, .total-blobs-slider, .rotate-slider, .blur-filter-slider, .layers-slider, .layer-opacity-slider {
     -webkit-appearance: none;
     width: 100%;
     height: 10px;
@@ -49,7 +48,7 @@ input[type="color"]::-webkit-color-swatch {
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
-.slider::-webkit-slider-thumb, .nodes-slider::-webkit-slider-thumb, .total-blobs-slider::-webkit-slider-thumb ,.rotate-slider::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb, .nodes-slider::-webkit-slider-thumb, .total-blobs-slider::-webkit-slider-thumb ,.rotate-slider::-webkit-slider-thumb, .blur-filter-slider::-webkit-slider-thumb, .layers-slider::-webkit-slider-thumb, .layer-opacity-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 15px;
@@ -58,14 +57,13 @@ input[type="color"]::-webkit-color-swatch {
     cursor: pointer;
     border-radius: 10%;
 }
-.slider::-moz-range-thumb, .nodes-slider::-moz-range-thumb, .total-blobs-slider::-moz-range-thumb, .rotate-slider::-moz-range-thumb {
+.slider::-moz-range-thumb, .nodes-slider::-moz-range-thumb, .total-blobs-slider::-moz-range-thumb, .rotate-slider::-moz-range-thumb, .blur-filter-slider::-moz-range-thumb, .layers-slider::-moz-range-thumb, .layer-opacity-slider::-moz-range-thumb {
     width: 15px;
     height: 15px;
     background: #4d9fff;
     cursor: pointer;
     border-radius: 10%;
 }
-
 .blob {
     display: flex;
     height: 500px;
@@ -138,6 +136,9 @@ footer p, footer a{
     height: 3vh;
     padding: 0px 10px;
 }
+svg {
+    position: relative;
+}
 
 @media only screen and (max-width: 700px) {
     .container {
@@ -170,9 +171,6 @@ footer p, footer a{
         text-align: center;;
     }
 }
-
-
-
 </style>
 <body>
     <div class="background-color">
@@ -184,7 +182,7 @@ footer p, footer a{
         <div class="blob">
             <div class="blob-container">
                 <div blob-body>
-                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" id="blobSvg">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" id="blobSvg">
                         <defs>
                         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style="stop-color: rgb(238, 205, 163);"></stop>
@@ -195,12 +193,7 @@ footer p, footer a{
                             <animate attributeName="d"
                             dur="10000ms"
                             repeatCount="indefinite"
-                            values="
-                            M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;
-                            M453.78747,319.98894Q416.97789,389.97789,353.96683,436.87838Q290.95577,483.77887,223.95577,447.43366Q156.95577,411.08845,105.64373,365.97789Q54.33169,320.86732,62.67444,252.61056Q71.01719,184.3538,113.01965,135.21007Q155.02211,86.06634,220.52211,66.46683Q286.02211,46.86732,335.5,91.94472Q384.97789,137.02211,437.78747,193.51106Q490.59704,250,453.78747,319.98894Z;
-                            M411.39826,313.90633Q402.59677,377.81265,342.92059,407.63957Q283.24442,437.46649,215.13648,432.5428Q147.02853,427.61911,82.23325,380.9572Q17.43796,334.29529,20.45223,250.83809Q23.46649,167.38089,82.5856,115.05707Q141.70471,62.73325,212.19045,63.73015Q282.67618,64.72705,352.67308,84.79839Q422.66998,104.86972,421.43486,177.43486Q420.19974,250,411.39826,313.90633Z;
-                            M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;
-                            "
+                            values="M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;M453.78747,319.98894Q416.97789,389.97789,353.96683,436.87838Q290.95577,483.77887,223.95577,447.43366Q156.95577,411.08845,105.64373,365.97789Q54.33169,320.86732,62.67444,252.61056Q71.01719,184.3538,113.01965,135.21007Q155.02211,86.06634,220.52211,66.46683Q286.02211,46.86732,335.5,91.94472Q384.97789,137.02211,437.78747,193.51106Q490.59704,250,453.78747,319.98894Z;M411.39826,313.90633Q402.59677,377.81265,342.92059,407.63957Q283.24442,437.46649,215.13648,432.5428Q147.02853,427.61911,82.23325,380.9572Q17.43796,334.29529,20.45223,250.83809Q23.46649,167.38089,82.5856,115.05707Q141.70471,62.73325,212.19045,63.73015Q282.67618,64.72705,352.67308,84.79839Q422.66998,104.86972,421.43486,177.43486Q420.19974,250,411.39826,313.90633Z;M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;"
                             ></animate>
                         </path>
                     </svg>
@@ -222,17 +215,29 @@ footer p, footer a{
                 <input value="#eecda3" oninput="gradientOneChange(this)" class="gradient-1" type="color"> <input value="#ef629f" oninput="gradientTwoChange(this)" class="gradient-2" type="color">
                 <p>Color</p>
                 <input value="#eecda3" oninput="changeColor(this)" class="color" type="color">
-                <p style="margin-top:2px">Total nodes <span class="nodes-info">8</span></p>
+                <p style="margin-top:2px">Blob layers <span class="multi-layers-info">1</span></p>
+                <form oninput="addLayers()"> 
+                    <input type="range" min="1" max="5" value="1" class="layers-slider">
+                </form>
+                <p style="margin-top:2px">Transparency <span class="layer-opacity-info">1</span></p>
+                <form oninput="layerOpacity()"> 
+                    <input type="range" min="0" max="1" step="0.1" value="1" class="layer-opacity-slider">
+                </form>
+                <p style="margin-top:2px">Complexity <span class="nodes-info">8</span></p>
                 <form oninput="changeNodes()"> 
                     <input type="range" min="7" max="11" value="8" class="nodes-slider">
                 </form>
-                <p style="margin-top:2px">Total Blob animations <span class="total-blobs-info">5</span></p>
+                <p style="margin-top:2px">Total animations <span class="total-blobs-info">5</span></p>
                 <form oninput="changeTotalBlob()"> 
                     <input type="range" min="3" max="10" value="5" class="total-blobs-slider">
                 </form>
+                <p style="margin-top:2px">Blur filter <span class="blur-info">0px</span></p>
+                <form oninput="addBlurFilter()"> 
+                    <input type="range" min="0" max="20" value="0" step="0.2" class="blur-filter-slider">
+                </form>
                 <p style="margin-top:2px">Rotate <span class="rotate-info">0 degree</span></p>
                 <form oninput="rotateSvg()"> 
-                    <input type="range" min="0" max="180" value="0" class="rotate-slider">
+                    <input type="range" min="-180" max="180" value="0" class="rotate-slider">
                 </form>
                 <p>Add image
                     <input onclick="switchOption()" type="checkbox" id="switch" unchecked>
@@ -313,55 +318,131 @@ footer p, footer a{
             "M415.01911,310.8863Q439.5452,371.7726,388.0904,405.2945Q336.6356,438.8164,280.7726,433.452Q224.9096,428.08761,185.95759,398.74511Q147.00559,369.40261,129.05219,330.15471Q111.09878,290.9068,102.89189,247.863Q94.68499,204.8192,97.4315,140.3164Q100.17801,75.81361,160.4068,60.51771Q220.6356,45.22181,275.226,60.1356Q329.8164,75.04939,372.9534,109.3658Q416.0904,143.6822,403.29171,196.8411Q390.49301,250,415.01911,310.8863Z"
         ]
     }
+    
+    const $ = val => document.querySelector(val)
+    const $$ = val => document.querySelectorAll(val)
+
+    const animate = $('animate')
+    const animate_info = $('.anim-info')
+    const speed_slider = $('input[type="range"]')
+    const gradient_stop = $$("stop")
+    const nodes_info = $('.nodes-info')
+    const nodes_slider = $('.nodes-slider')
+    const total_blobs_slider = $('.total-blobs-slider')
+    const total_blobs_info = $('.total-blobs-info')
+    const svgCode = $('#blobSvg')
+    const copyCode_btn = $('.copyCode')
+    const downloadSvg_btn = $('.downloadSVG')
+    const switch_btn = $('#switch')
+    const switchInfo_btn = $('label[for="switch"]')
+    const imageInput_url = $('.imageUrl')
+    const svg = $('svg')
+    const svgPath = $('path')
+    const allSvg_paths = $$('path')
+    const rotate_blob_info = $('.rotate-info')
+    const rotate_blob_slider = $('.rotate-slider')
+    const multi_layers_info = $('.multi-layers-info')
+    const layers_slider = $('.layers-slider')
+    const switchOption_info = $('label[for="switch"]')
+    const layer_opacity_info = $('.layer-opacity-info')
+    const layer_opacity_slider = $('.layer-opacity-slider')
+
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex
-
         while (currentIndex != 0) {
-
             randomIndex = Math.floor(Math.random() * currentIndex)
             currentIndex--
-
             [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]]
         }
-
         return array
     }
+
     function changeBackgroundColor(elm){
         document.body.bgColor = elm.value
     }
-    function changeAnimationSpeed(){
-        document.querySelector('animate').setAttribute('dur', document.querySelector('input[type="range"]').value + 'ms' )
-        document.querySelector('.anim-info').innerText = document.querySelector('input[type="range"]').value / 1000 + 's'
-    }
-    function gradientOneChange(elm){
-        document.querySelectorAll("stop")[0].style.stopColor = elm.value
-    }
-    function gradientTwoChange(elm){
-        document.querySelectorAll("stop")[1].style.stopColor = elm.value
-    }
-    function changeColor(elm){
-        document.querySelectorAll("stop")[0].style.stopColor = elm.value
-        document.querySelectorAll("stop")[1].style.stopColor = elm.value
-    }
-    function changeNodes(){
-        document.querySelector('.nodes-info').innerText = document.querySelector('.nodes-slider').value 
-        const shuffleNodes = shuffle(nodes[document.querySelector('.nodes-slider').value])
-        const firstShuffleNode = shuffleNodes[0] 
-        var animatedValuse = ''
-        shuffleNodes.slice(0, parseInt(document.querySelector('.total-blobs-slider').value)).map((value) => {
-            animatedValuse += `${value};\n`
-        })
-        animatedValuse += firstShuffleNode 
-        document.querySelector('animate').setAttribute('values', animatedValuse)
-    }
-    function changeTotalBlob(){
-        document.querySelector('.total-blobs-info').innerText = document.querySelector('.total-blobs-slider').value 
-        changeNodes()
-    }
-    function copyCode(){
-        const svgCode = document.querySelector('#blobSvg')
 
+    function changeAnimationSpeed(){
+        animate_info.innerText = speed_slider.value / 1000 + 's'
+        for (let i = 0; i <= $$('path').length - 1; i++){
+            $$('path')[i].getElementsByTagName('animate')[0].setAttribute('dur', speed_slider.value + 'ms' )
+        }
+    }
+
+    function gradientOneChange(elm){
+        gradient_stop[0].style.stopColor = elm.value
+    }
+
+    function gradientTwoChange(elm){
+        gradient_stop[1].style.stopColor = elm.value
+    }
+
+    function changeColor(elm){
+        gradient_stop[0].style.stopColor = elm.value
+        gradient_stop[1].style.stopColor = elm.value
+    }
+
+    function changeNodes(n){
+        switch_btn.checked = false
+        imageInput_url.disabled = true
+        if (n == '.nodes-slider'){
+            nodes_slider.focus()
+        } else if (n == '.total-blobs-slider'){
+            total_blobs_slider.focus()
+        } else if (n == '.layers-slider'){
+            layers_slider.focus()
+        }
+        
+        nodes_info.innerText = nodes_slider.value 
+        // remove old svg paths
+        const paths_len = $$('path').length - 1
+        for (let i = 0; i<=paths_len; i++){
+            $$('path')[0].remove()
+        } 
+
+        if(switch_btn.checked){
+            // ...
+        } else {
+            svg.style.opacity = 1
+        }
+
+        // create multi blobs
+        for (let i = 1; i <= parseInt(layers_slider.value); i++){
+            const shuffleNodes = shuffle(nodes[nodes_slider.value])
+            const firstShuffleNode = shuffleNodes[0]
+            // create paths ...
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+            path.setAttribute('id', 'blob')
+            path.setAttribute('fill', 'url(#gradient)')
+            path.style.opacity = layer_opacity_slider.value
+            // create animate
+            const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animate')
+            animate.setAttribute('attributeName', 'd')
+            animate.setAttribute('dur', speed_slider.value / 1000 + 's')
+            animate.setAttribute('dur', speed_slider.value / 1000 + 's')
+            animate.setAttribute('repeatCount', 'indefinite')
+            // merge animate with path
+            path.appendChild(animate)
+            
+            // animate each blob
+            var animatedValues = ''
+            shuffleNodes.slice(0, parseInt(total_blobs_slider.value)).map((value) => {
+                animatedValues += `${value};`
+            })
+            animatedValues += firstShuffleNode
+            animate.setAttribute('values', animatedValues)
+            
+            // merge path with svg
+            svg.appendChild(path)
+        }
+    }
+
+    function changeTotalBlob(){
+        total_blobs_info.innerText = total_blobs_slider.value 
+        changeNodes('.total-blobs-slider')
+    }
+
+    function copyCode(){
         const fakeInput = document.createElement('input')
         fakeInput.value = svgCode.outerHTML
 
@@ -369,21 +450,22 @@ footer p, footer a{
         fakeInput.setSelectionRange(0, 99999)
 
         navigator.clipboard.writeText(fakeInput.value)
-        document.querySelector('.copyCode').innerHTML = `Copied`
+        copyCode_btn.innerHTML = `Copied`
         setTimeout(() => {
-            document.querySelector('.copyCode').innerHTML = `Copy Code`
+            copyCode_btn.innerHTML = `Copy Code`
         }, 2000)
     }
+
     function download(){
-        const svgCode = document.querySelector('#blobSvg')
         downloadSvg(svgCode.outerHTML)
 
-        document.querySelector('.downloadSVG').innerHTML = `Downloading...`
+        downloadSvg_btn.innerHTML = `Downloading...`
         setTimeout(() => {
-            document.querySelector('.downloadSVG').innerHTML = `Download SVG`
+            downloadSvg_btn.innerHTML = `Download SVG`
         }, 1000)
 
     }
+
     function downloadSvg(text) {
         var element = document.createElement('a')
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text))
@@ -396,11 +478,30 @@ footer p, footer a{
 
         document.body.removeChild(element)
     }
-    function switchOption(){
-        if(document.querySelector('#switch').checked){
-            document.querySelector('label[for="switch"]').textContent = 'Disable Option'
-            document.querySelector('.imageUrl').removeAttribute('disabled')
 
+    function switchOption(){
+        if(switch_btn.checked){
+            multi_layers_info.innerText = 1
+            layers_slider.value = 1 
+            switchOption_info.textContent = 'Disable Option'
+            imageInput_url.removeAttribute('disabled')
+            
+            const svgImage_len = $$('svg>image').length - 1
+            for (let i = 0; i<= svgImage_len; i++) {
+                $$('svg>image')[0].remove()
+            }
+            
+            const svgPaths_len = $$('svg>path').length - 1
+            for (let i = 0; i<= svgPaths_len; i++) {
+                $$('svg>path')[0].remove()
+            }
+            
+            const svgClipPath_len = $$('svg>clipPath').length - 1
+            for (let i = 0; i<= svgClipPath_len; i++) {
+                $$('svg>clipPath')[0].remove()
+            }
+
+            svg.style.opacity = layer_opacity_slider.value
             var image = document.createElementNS("http://www.w3.org/2000/svg", "image")
 
             image.setAttribute('x', '0')
@@ -408,54 +509,60 @@ footer p, footer a{
             image.setAttribute('width', '100%')
             image.setAttribute('height', '100%')
             image.setAttribute('clip-path', "url(#shape)")
-            image.setAttributeNS(null, 'href', document.querySelector('.imageUrl').value)
+            image.setAttributeNS(null, 'href', imageInput_url.value)
             image.setAttribute('preserveAspectRatio', 'none')
 
-            document.querySelector('svg').prepend(image)
+            svg.prepend(image)
             
             // create clipPath
             var clipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath")
             clipPath.setAttribute('id', "shape")
             
             // clone path 
-            var path = document.querySelector('path').cloneNode(true)
+            var path = svgPath.cloneNode(true)
             
             // remove old path
-            document.querySelector('path').remove()
+            svgPath.remove()
 
             // add path to clipShape we created
             clipPath.appendChild(path)
 
             // append clipPath to svg
-            document.querySelector('svg').appendChild(clipPath)
+            svg.appendChild(clipPath)
 
         } else {
             // remove image
-            document.querySelector('image').remove()
+            $('image').remove()
             
             // get clipPath
-            var clipPath = document.querySelector('clipPath#shape')
+            var clipPath = $('clipPath#shape')
             
             // get a copy of path
-            var path = document.querySelector('clipPath#shape>path')
+            var path = $('clipPath#shape>path')
             
             // remove clipPath
             clipPath.remove()
             
             // append path to svg
-            document.querySelector('svg').prepend(path)
+            svg.prepend(path)
 
-            document.querySelector('label[for="switch"]').textContent = 'Enable Option'
-            document.querySelector('.imageUrl').setAttribute('disabled','')
+            switchOption_info.textContent = 'Enable Option'
+            imageInput_url.setAttribute('disabled','')
+
+            svg.style.opacity = 1
+            layer_opacity_info.innerText = 1
+            layer_opacity_slider.value = 1
+            path.style.opacity = 1
         }
     }
 
     function urlChange(){
-        const imgUrl = document.querySelector('.imageUrl')
+        const imgUrl = imageInput_url
         if(imgUrl && imgUrl.value.length > 0 && imgUrl.value.trim().length > 0){
             
+            svg.style.opacity = layer_opacity_slider.value
             // remove previous image
-            document.querySelector('image').remove()
+            $('image').remove()
 
             // create new one
             var image = document.createElementNS("http://www.w3.org/2000/svg", "image")
@@ -465,15 +572,52 @@ footer p, footer a{
             image.setAttribute('width', '100%')
             image.setAttribute('height', '100%')
             image.setAttribute('clip-path', "url(#shape)")
-            image.setAttributeNS(null, 'href', document.querySelector('.imageUrl').value)
+            image.setAttributeNS(null, 'href', imageInput_url.value)
             image.setAttribute('preserveAspectRatio', 'none')
 
-            document.querySelector('svg').prepend(image)
+            svg.prepend(image)
         }
     }
+    
     function rotateSvg(){
-            document.querySelector('.rotate-info').innerText = document.querySelector('.rotate-slider').value + ' degree' 
-            document.querySelector('svg').setAttribute('transform', `rotate(${document.querySelector('.rotate-slider').value})`)
+        rotate_blob_info.innerText = rotate_blob_slider.value + ' degree' 
+        svg.setAttribute('transform', `rotate(${rotate_blob_slider.value})`)
+    }
+
+    function addLayers(){
+        switch_btn.checked = false
+        imageInput_url.disabled = true
+        multi_layers_info.innerText = layers_slider.value
+
+        // remove image
+        $('image')?.remove()
+        
+        // get clipPath
+        var clipPath = $('clipPath#shape')
+        // remove clipPath
+        clipPath?.remove()
+
+        changeNodes('.layers-slider')
+    }
+
+    function layerOpacity(){
+        if (switch_btn.checked){
+            svg.style.opacity = layer_opacity_slider.value
+        } else {
+            svg.style.opacity = layer_opacity_slider.value
+            svg.style.opacity = 1
+            layer_opacity_info.innerText = 1
+            layer_opacity_info.innerText = layer_opacity_slider.value
+            for (let i = 0; i<=$$('path').length  - 1; i++){
+                $$('path')[i].style.opacity = $('.layer-opacity-slider').value
+            } 
+        }
+    }
+
+    function addBlurFilter(){
+        $('.blur-filter-slider').focus()
+        $('.blur-info').innerText = document.querySelector('.blur-filter-slider').value + 'px'
+        $('svg').setAttribute('filter', `blur(${$('.blur-filter-slider').value}px)`)
     }
 </script>
 </html>
