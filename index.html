@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7999649673099190" crossorigin="anonymous"></script>
-     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-M8C97MZ');
+        })(window,document,'script','dataLayer','GTM-M8C97MZ');</script>
     <title>Blob Animation | Generate smooth blob animation</title>
     <meta name="description" content="Blob Animation it's a free and simple tool to generate smooth blob animation for your website and design projects">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -146,6 +146,102 @@ svg {
     position: relative;
 }
 
+div[popup] {
+    /* width: 505px;
+    height: 232px;
+    display: flex;
+    padding: -2.4rem 2rem;
+    border: 3px solid #0067fb;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 8px 8px 0 rgb(0 0 0 / 20%);
+    z-index: 1;
+    justify-content: center;
+    animation: popup 0.7s;  */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+div[popup] > [popup-inner] {
+    display: flex;
+    width: 505px;
+    height: 232px;
+    padding: -2.4rem 2rem;
+    border: 3px solid #0067fb;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 8px 8px 0 rgb(0 0 0 / 20%);
+    justify-content: center;
+    animation: popup 0.7s;
+}
+
+@keyframes popup {
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.4);
+  }
+  60%{  
+    transform: scale(1.1);
+  }
+  70%{
+    transform: scale(1.2);
+  }
+  80%{
+    transform: scale(1);
+  }
+  90%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+[popup] > [popup-inner] > [popup-container] {
+    place-self: center;
+}
+
+[popup] > [popup-inner] > [popup-container] > h2{
+    font-size: 21px;
+    color: black;
+}
+
+[popup] > [popup-inner] >[popup-container] > h2{
+    font-size: 21px;
+    color: #1b1160;
+}
+
+[popup] > [popup-inner] >[popup-container] > [cta] > [accept-btn]{
+    font-size: 12px;
+    padding: 6px;
+    background: #188f18;
+    border: 0;
+    color: white;
+    cursor: pointer;
+}
+
+[popup] > [popup-inner] >[popup-container] > [cta] > [close-btn]{
+    font-size: 12px;
+    padding: 6px;
+    background: #380505;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+[popup] > [popup-inner] > [popup-container] > [cta] {
+    display: flex;
+}
+
 @media only screen and (max-width: 700px) {
     .container {
         display: flex;
@@ -164,6 +260,17 @@ svg {
     footer p, footer a{
         font-size: 10px;
     }
+    div[popup] > [popup-inner]{
+        width: fit-content;
+        height: 187px;
+        padding: 5px;
+        font-size: 18px;
+    }
+    [popup] > [popup-inner] >[popup-container] {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
 @media only screen and (min-width: 700px) {
@@ -174,11 +281,23 @@ svg {
         margin-right: auto;
         left: 0;
         right: 0;
-        text-align: center;;
+        text-align: center;
     }
 }
 </style>
 <body>
+    <div popup>
+        <div popup-inner>
+            <div popup-container>
+                <h1>Hey! &#128075;</h1>
+                <h2>Are you looking to hire a software developer?</h2>
+                <div cta> 
+                    <button accept-btn onclick="makePopupWatched(), $('[popup]').style.display = 'none', location.href='mailto:aldison.lluka.al@gmail.com'">Yes, I want to talk to a software developer</button>
+                    <button close-btn>No, just close this popup</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="background-color">
         <div class="background-color-conteiner">
             <p>Background Color </p> <input style="border: 1px solid white;height: 24px;" oninput="changeBackgroundColor(this)" value="#fff" class="background-color" class="bg" type="color">
@@ -625,5 +744,25 @@ svg {
         $('.blur-info').innerText = document.querySelector('.blur-filter-slider').value + 'px'
         $('svg').setAttribute('filter', `blur(${$('.blur-filter-slider').value}px)`)
     }
+    
+    // popup
+    const ONE_DAY_IN_MS = 86400
+    const DAYS_TO_RESHOW_POPUP = 10
+
+    const makePopupWatched = () => {
+        document.cookie = `popup=popup; max-age={ONE_DAY_IN_MS * DAYS_TO_RESHOW_POPUP}; path=/`
+    }
+
+    if(document.cookie.includes('popup')) {
+        $('[popup]').style.display = 'none'
+    } else {
+        $('[popup]').style.display = 'flex'
+    }
+    
+    
+    $("[close-btn]").addEventListener("click", () => {
+        $('[popup]').style.display = 'none'
+        makePopupWatched()
+    })
 </script>
 </html>
