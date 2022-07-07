@@ -747,10 +747,12 @@ div[popup] > [popup-inner] {
         $('svg').setAttribute('filter', `blur(${$('.blur-filter-slider').value}px)`)
     }
     
+    // popup
+    const ONE_DAY_IN_SECONDS = 86400
+    const DAYS_TO_RESHOW_POPUP = 10
+
     const makePopupWatched = () => {
-        const ONE_DAY_IN_SECONDS = 86400
-        const DAYS_TO_RESHOW_POPUP = 10
-        document.cookie = `popup=popup; max-age={ONE_DAY_IN_SECONDS * DAYS_TO_RESHOW_POPUP}; path=/`
+        document.cookie = f`popup=popup; max-age={ONE_DAY_IN_SECONDS * DAYS_TO_RESHOW_POPUP}; path=/`
     }
 
     if(document.cookie.includes('popup')) {
