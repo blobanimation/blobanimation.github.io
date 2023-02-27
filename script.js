@@ -63,7 +63,7 @@ nodes = {
     ]
 }
 
-var qs$ = val => document.querySelector(val)
+const qs$ = val => document.querySelector(val)
 const $$ = val => document.querySelectorAll(val)
 
 const animate = qs$('animate')
