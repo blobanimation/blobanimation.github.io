@@ -450,33 +450,33 @@ div[popup] > [popup-inner] {
         ]
     }
     
-    const $ = val => document.querySelector(val)
+    const qs$ = val => document.querySelector(val)
     const $$ = val => document.querySelectorAll(val)
 
-    const animate = $('animate')
-    const animate_info = $('.anim-info')
-    const speed_slider = $('input[type="range"]')
+    const animate = qs$('animate')
+    const animate_info = qs$('.anim-info')
+    const speed_slider = qs$('input[type="range"]')
     const gradient_stop = $$("stop")
-    const nodes_info = $('.nodes-info')
-    const nodes_slider = $('.nodes-slider')
-    const total_blobs_slider = $('.total-blobs-slider')
-    const total_blobs_info = $('.total-blobs-info')
-    const svgCode = $('#blobSvg')
-    const copyCode_btn = $('.copyCode')
-    const downloadSvg_btn = $('.downloadSVG')
-    const switch_btn = $('#switch')
-    const switchInfo_btn = $('label[for="switch"]')
-    const imageInput_url = $('.imageUrl')
-    const svg = $('svg')
-    const svgPath = $('path')
+    const nodes_info = qs$('.nodes-info')
+    const nodes_slider = qs$('.nodes-slider')
+    const total_blobs_slider = qs$('.total-blobs-slider')
+    const total_blobs_info = qs$('.total-blobs-info')
+    const svgCode = qs$('#blobSvg')
+    const copyCode_btn = qs$('.copyCode')
+    const downloadSvg_btn = qs$('.downloadSVG')
+    const switch_btn = qs$('#switch')
+    const switchInfo_btn = qs$('label[for="switch"]')
+    const imageInput_url = qs$('.imageUrl')
+    const svg = qs$('svg')
+    const svgPath = qs$('path')
     const allSvg_paths = $$('path')
-    const rotate_blob_info = $('.rotate-info')
-    const rotate_blob_slider = $('.rotate-slider')
-    const multi_layers_info = $('.multi-layers-info')
-    const layers_slider = $('.layers-slider')
-    const switchOption_info = $('label[for="switch"]')
-    const layer_opacity_info = $('.layer-opacity-info')
-    const layer_opacity_slider = $('.layer-opacity-slider')
+    const rotate_blob_info = qs$('.rotate-info')
+    const rotate_blob_slider = qs$('.rotate-slider')
+    const multi_layers_info = qs$('.multi-layers-info')
+    const layers_slider = qs$('.layers-slider')
+    const switchOption_info = qs$('label[for="switch"]')
+    const layer_opacity_info = qs$('.layer-opacity-info')
+    const layer_opacity_slider = qs$('.layer-opacity-slider')
 
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex
@@ -663,13 +663,13 @@ div[popup] > [popup-inner] {
 
         } else {
             // remove image
-            $('image').remove()
+            qs$('image').remove()
             
             // get clipPath
-            var clipPath = $('clipPath#shape')
+            var clipPath = qs$('clipPath#shape')
             
             // get a copy of path
-            var path = $('clipPath#shape>path')
+            var path = qs$('clipPath#shape>path')
             
             // remove clipPath
             clipPath.remove()
@@ -693,7 +693,7 @@ div[popup] > [popup-inner] {
             
             svg.style.opacity = layer_opacity_slider.value
             // remove previous image
-            $('image').remove()
+            qs$('image').remove()
 
             // create new one
             var image = document.createElementNS("http://www.w3.org/2000/svg", "image")
@@ -712,7 +712,7 @@ div[popup] > [popup-inner] {
     
     function rotateSvg(){
         rotate_blob_info.innerText = rotate_blob_slider.value + ' degree' 
-        svg.setAttribute('transform', `rotate(${rotate_blob_slider.value})`)
+        svg.setAttribute('transform', `rotate(qs${rotate_blob_slider.value})`)
     }
 
     function addLayers(){
@@ -721,10 +721,10 @@ div[popup] > [popup-inner] {
         multi_layers_info.innerText = layers_slider.value
 
         // remove image
-        $('image')?.remove()
+        qs$('image')?.remove()
         
         // get clipPath
-        var clipPath = $('clipPath#shape')
+        var clipPath = qs$('clipPath#shape')
         // remove clipPath
         clipPath?.remove()
 
@@ -740,15 +740,15 @@ div[popup] > [popup-inner] {
             layer_opacity_info.innerText = 1
             layer_opacity_info.innerText = layer_opacity_slider.value
             for (let i = 0; i<=$$('path').length  - 1; i++){
-                $$('path')[i].style.opacity = $('.layer-opacity-slider').value
+                $$('path')[i].style.opacity = qs$('.layer-opacity-slider').value
             } 
         }
     }
 
     function addBlurFilter(){
-        $('.blur-filter-slider').focus()
-        $('.blur-info').innerText = document.querySelector('.blur-filter-slider').value + 'px'
-        $('svg').setAttribute('filter', `blur(${$('.blur-filter-slider').value}px)`)
+        qs$('.blur-filter-slider').focus()
+        qs$('.blur-info').innerText = document.querySelector('.blur-filter-slider').value + 'px'
+        qs$('svg').setAttribute('filter', `blur(qs${qs$('.blur-filter-slider').value}px)`)
     }
     
     // popup
@@ -756,18 +756,18 @@ div[popup] > [popup-inner] {
     const DAYS_TO_RESHOW_POPUP = 10
 
     const makePopupWatched = () => {
-        document.cookie = `popup=popup; max-age=${ONE_DAY_IN_SECONDS * DAYS_TO_RESHOW_POPUP}; path=/`
+        document.cookie = `popup=popup; max-age=qs${ONE_DAY_IN_SECONDS * DAYS_TO_RESHOW_POPUP}; path=/`
     }
 
     if(document.cookie.includes('popup')) {
-        $('[popup]').style.display = 'none'
+        qs$('[popup]').style.display = 'none'
     } else {
-        $('[popup]').style.display = 'flex'
+        qs$('[popup]').style.display = 'flex'
     }
     
     
-    $("[close-btn]").addEventListener("click", () => {
-        $('[popup]').style.display = 'none'
+    qs$("[close-btn]").addEventListener("click", () => {
+        qs$('[popup]').style.display = 'none'
         makePopupWatched()
     })
 </script>
