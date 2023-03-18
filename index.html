@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <head>
-    <!-- Ezoic Code -->
-    <!-- <script>var ezoicId = 439956; </script>
-    <script type="text/javascript" src="//go.ezoic.net/ezoic/ezoic.js"></script> -->
-    <!-- Ezoic Code -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7999649673099190" crossorigin="anonymous"></script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -288,10 +284,81 @@ div[popup] > [popup-inner] {
         text-align: center;
     }
 }
+.skillsharead {
+    display: flex;
+    background: #4287f5;
+    padding: 1em;
+    animation: slide 1s ease 2s forwards;
+}
+.skillsharead-container { 
+    display: flex;
+    max-width: 1000px;
+    margin: 0px auto;
+}
+.skillsharead-container > span { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.skillsharead-container > span > a {
+    color: white;
+    font-family: cursive;
+}
+.skillsharead-container > span > img {
+    width: 0;
+    animation: skillsharead-img 1s ease 1.5s forwards;
+}
+@keyframes skillsharead-img {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 5rem;
+    }
+}
+@-moz-keyframes skillsharead-img {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 5rem;
+    }
+}
+@-webkit-keyframes skillsharead-img {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 5rem;
+    }
+}
+@-o-keyframes skillsharead-img {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 5rem;
+    }
+}
+@-ms-keyframes skillsharead-img {
+    from {
+        width: 0;
+    } 
+    to {
+        width: 5rem;
+    }
+}
 </style>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8C97MZ"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="skillsharead" data-nosnippet>
+    <div class="skillsharead-container">
+        <span id="1600827">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Skillshare_logo_2020.svg">
+            <a href="https://skillshare.eqcm.net/c/4058757/1600827/4650?coupon=annual30aff">Upgrade Your Skills with Skillshare - Get 30% off Online Design, Photoshop, and More Courses Today!</a>
+        </span>
+    </div>
+</div>
     <div popup>
         <div popup-inner>
             <div popup-container>
@@ -379,7 +446,7 @@ div[popup] > [popup-inner] {
         </div>
     </div>   
     <footer>
-        <p>	&copy; Copyright 2023</p>&nbsp&nbsp
+        <p>	&copy; Copyright 2022</p>&nbsp&nbsp
         <p>Author: Aldison Lluka</p>&nbsp&nbsp
         <a href="mailto:aldison.lluka.al@gmail.com">aldison.lluka.al@gmail.com</a></p>
     </footer>
@@ -450,33 +517,33 @@ div[popup] > [popup-inner] {
         ]
     }
     
-    const qs$ = val => document.querySelector(val)
+    const $ = val => document.querySelector(val)
     const $$ = val => document.querySelectorAll(val)
 
-    const animate = qs$('animate')
-    const animate_info = qs$('.anim-info')
-    const speed_slider = qs$('input[type="range"]')
+    const animate = $('animate')
+    const animate_info = $('.anim-info')
+    const speed_slider = $('input[type="range"]')
     const gradient_stop = $$("stop")
-    const nodes_info = qs$('.nodes-info')
-    const nodes_slider = qs$('.nodes-slider')
-    const total_blobs_slider = qs$('.total-blobs-slider')
-    const total_blobs_info = qs$('.total-blobs-info')
-    const svgCode = qs$('#blobSvg')
-    const copyCode_btn = qs$('.copyCode')
-    const downloadSvg_btn = qs$('.downloadSVG')
-    const switch_btn = qs$('#switch')
-    const switchInfo_btn = qs$('label[for="switch"]')
-    const imageInput_url = qs$('.imageUrl')
-    const svg = qs$('svg')
-    const svgPath = qs$('path')
+    const nodes_info = $('.nodes-info')
+    const nodes_slider = $('.nodes-slider')
+    const total_blobs_slider = $('.total-blobs-slider')
+    const total_blobs_info = $('.total-blobs-info')
+    const svgCode = $('#blobSvg')
+    const copyCode_btn = $('.copyCode')
+    const downloadSvg_btn = $('.downloadSVG')
+    const switch_btn = $('#switch')
+    const switchInfo_btn = $('label[for="switch"]')
+    const imageInput_url = $('.imageUrl')
+    const svg = $('svg')
+    const svgPath = $('path')
     const allSvg_paths = $$('path')
-    const rotate_blob_info = qs$('.rotate-info')
-    const rotate_blob_slider = qs$('.rotate-slider')
-    const multi_layers_info = qs$('.multi-layers-info')
-    const layers_slider = qs$('.layers-slider')
-    const switchOption_info = qs$('label[for="switch"]')
-    const layer_opacity_info = qs$('.layer-opacity-info')
-    const layer_opacity_slider = qs$('.layer-opacity-slider')
+    const rotate_blob_info = $('.rotate-info')
+    const rotate_blob_slider = $('.rotate-slider')
+    const multi_layers_info = $('.multi-layers-info')
+    const layers_slider = $('.layers-slider')
+    const switchOption_info = $('label[for="switch"]')
+    const layer_opacity_info = $('.layer-opacity-info')
+    const layer_opacity_slider = $('.layer-opacity-slider')
 
     function shuffle(array) {
         let currentIndex = array.length,  randomIndex
@@ -663,13 +730,13 @@ div[popup] > [popup-inner] {
 
         } else {
             // remove image
-            qs$('image').remove()
+            $('image').remove()
             
             // get clipPath
-            var clipPath = qs$('clipPath#shape')
+            var clipPath = $('clipPath#shape')
             
             // get a copy of path
-            var path = qs$('clipPath#shape>path')
+            var path = $('clipPath#shape>path')
             
             // remove clipPath
             clipPath.remove()
@@ -693,7 +760,7 @@ div[popup] > [popup-inner] {
             
             svg.style.opacity = layer_opacity_slider.value
             // remove previous image
-            qs$('image').remove()
+            $('image').remove()
 
             // create new one
             var image = document.createElementNS("http://www.w3.org/2000/svg", "image")
@@ -712,7 +779,7 @@ div[popup] > [popup-inner] {
     
     function rotateSvg(){
         rotate_blob_info.innerText = rotate_blob_slider.value + ' degree' 
-        svg.setAttribute('transform', `rotate(qs${rotate_blob_slider.value})`)
+        svg.setAttribute('transform', `rotate(${rotate_blob_slider.value})`)
     }
 
     function addLayers(){
@@ -721,10 +788,10 @@ div[popup] > [popup-inner] {
         multi_layers_info.innerText = layers_slider.value
 
         // remove image
-        qs$('image')?.remove()
+        $('image')?.remove()
         
         // get clipPath
-        var clipPath = qs$('clipPath#shape')
+        var clipPath = $('clipPath#shape')
         // remove clipPath
         clipPath?.remove()
 
@@ -740,34 +807,34 @@ div[popup] > [popup-inner] {
             layer_opacity_info.innerText = 1
             layer_opacity_info.innerText = layer_opacity_slider.value
             for (let i = 0; i<=$$('path').length  - 1; i++){
-                $$('path')[i].style.opacity = qs$('.layer-opacity-slider').value
+                $$('path')[i].style.opacity = $('.layer-opacity-slider').value
             } 
         }
     }
 
     function addBlurFilter(){
-        qs$('.blur-filter-slider').focus()
-        qs$('.blur-info').innerText = document.querySelector('.blur-filter-slider').value + 'px'
-        qs$('svg').setAttribute('filter', `blur(qs${qs$('.blur-filter-slider').value}px)`)
+        $('.blur-filter-slider').focus()
+        $('.blur-info').innerText = document.querySelector('.blur-filter-slider').value + 'px'
+        $('svg').setAttribute('filter', `blur(${$('.blur-filter-slider').value}px)`)
     }
     
     // popup
-    const ONE_DAY_IN_SECONDS = 86400
+    const ONE_DAY_IN_MS = 86400
     const DAYS_TO_RESHOW_POPUP = 10
 
     const makePopupWatched = () => {
-        document.cookie = `popup=popup; max-age=qs${ONE_DAY_IN_SECONDS * DAYS_TO_RESHOW_POPUP}; path=/`
+        document.cookie = `popup=popup; max-age={ONE_DAY_IN_MS * DAYS_TO_RESHOW_POPUP}; path=/`
     }
-
+    
     if(document.cookie.includes('popup')) {
-        qs$('[popup]').style.display = 'none'
+        $('[popup]').style.display = 'none'
     } else {
-        qs$('[popup]').style.display = 'flex'
+        $('[popup]').style.display = 'none' // display should be "flex", but we are not using this popup anymore.
     }
     
     
-    qs$("[close-btn]").addEventListener("click", () => {
-        qs$('[popup]').style.display = 'none'
+    $("[close-btn]").addEventListener("click", () => {
+        $('[popup]').style.display = 'none'
         makePopupWatched()
     })
 </script>
